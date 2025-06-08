@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #ffcc70, #a8e063); /* 주황+초록 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chat-container {
+  background-color: #fffef4;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: min(95vw, 600px);
+  height: min(95vh, 750px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 3px solid #ffa94d; /* 주황 테두리 */
+}
+
+h1 {
+  text-align: center;
+  background-color: white;
+  color: #ffa500;
+  margin: 0;
+  padding: 24px;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+h1::before {
+  content: '🥕🍳 ';
+}
+
+h1::after {
+  content: ' 🧅🥬';
+}
+
+.chatbox {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f6ffe9; /* 연한 초록 */
+  display: flex;
+  flex-direction: column;
+}
+
+.input-area {
+  display: flex;
+  padding: 16px;
+  background-color: #fffbe6;
+  border-top: 2px solid #f7c04a;
+}
+
+#userInput {
+  flex: 1;
+  padding: 14px;
+  border: 2px solid #a8e063;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  background-color: #ffffff;
+}
+
+#sendBtn {
+  margin-left: 10px;
+  padding: 14px 22px;
+  background-color: #ffa500;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#sendBtn:hover {
+  background-color: #e69500;
+}
+
+.message {
+  margin: 8px 0;
+  padding: 14px 18px;
+  border-radius: 14px;
+  max-width: 70%;
+  word-wrap: break-word;
+  line-height: 1.5;
+  font-size: 14.5px;
+  background-color: #ffffff;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #ffe6cc; /* 연한 주황 */
+  color: #914800;
+  border: 1px solid #ffc180;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background-color: #e4ffd1; /* 연한 초록 */
+  color: #466d1d;
+  border: 1px solid #c8f7a4;
+}
+
+.emoji-style {
+  font-size: 1.2em;
+  margin-right: 5px;
+  vertical-align: middle;
+}
