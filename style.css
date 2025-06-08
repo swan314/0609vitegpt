@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom right, #ffcc70, #a8e063); /* 주황+초록 배경 */
+  background: linear-gradient(to bottom right, #ffcc70, #a8e063); /* 🍊 → 🍃 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,24 +11,25 @@ body {
 
 .chat-container {
   background-color: #fffef4;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  width: min(95vw, 600px);
-  height: min(95vh, 750px);
+  border-radius: 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  width: min(90vw, 560px);
+  height: min(92vh, 700px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 3px solid #ffa94d; /* 주황 테두리 */
+  border: 4px solid #ffb347; /* 진한 주황 테두리 */
 }
 
 h1 {
   text-align: center;
   background-color: white;
-  color: #ffa500;
+  color: #ff8c00;
   margin: 0;
-  padding: 24px;
-  font-size: 1.8rem;
+  padding: 20px 24px;
+  font-size: 1.9rem;
   letter-spacing: 1px;
+  border-bottom: 2px dashed #fdd37c;
 }
 
 h1::before {
@@ -41,11 +42,12 @@ h1::after {
 
 .chatbox {
   flex: 1;
-  padding: 20px;
+  padding: 24px;
   overflow-y: auto;
   background: #f6ffe9; /* 연한 초록 */
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .input-area {
@@ -53,25 +55,25 @@ h1::after {
   padding: 16px;
   background-color: #fffbe6;
   border-top: 2px solid #f7c04a;
+  gap: 10px;
 }
 
 #userInput {
   flex: 1;
   padding: 14px;
   border: 2px solid #a8e063;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 15px;
   outline: none;
   background-color: #ffffff;
 }
 
 #sendBtn {
-  margin-left: 10px;
   padding: 14px 22px;
   background-color: #ffa500;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease;
@@ -82,14 +84,14 @@ h1::after {
 }
 
 .message {
-  margin: 8px 0;
+  margin: 6px 0;
   padding: 14px 18px;
-  border-radius: 14px;
-  max-width: 70%;
+  border-radius: 16px;
+  max-width: 75%;
   word-wrap: break-word;
-  line-height: 1.5;
+  line-height: 1.6;
   font-size: 14.5px;
-  background-color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
 }
 
 .message.user {
