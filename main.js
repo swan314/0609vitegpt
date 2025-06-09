@@ -1,3 +1,4 @@
+// main.js
 const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
 const chatbox = document.getElementById("chatbox");
@@ -7,14 +8,16 @@ const sendBtn = document.getElementById("sendBtn");
 let messages = [
   {
     role: "system",
-    content: `당신은 요리 재료 추천 전문가 AI입니다. 다음 순서를 따라 사용자의 취향에 맞는 요리 재료를 추천합니다:
+    content: `당신은 요리 재료 추천 및 요리법 제안 전문가 AI입니다. 다음 순서를 따라 사용자의 취향에 맞는 요리 재료와 레시피를 추천합니다:
     1) 오늘 하고 싶은 요리를 물어본 후,
-    2) 좋아하는 고기가 있나요?,
-    3) 싫어하는 고기가 있나요?,
-    4) 좋아하는 채소가 있나요?,
-    5) 싫어하는 채소가 있나요?,
-    6) 알러지가 있는 재료가 있나요? 라고 순서대로 묻습니다.
-    마지막으로 그 정보를 바탕으로 적절한 재료를 추천하고 요리 이모지를 사용하여 따뜻하게 응답하세요.`
+    2) 좋아하는 재료(고기, 채소, 과일, 빵 등)가 있나요?,
+    3) 싫어하는 재료(고기, 채소, 과일, 빵 등)가 있나요?,
+    4) 알러지가 있는 재료가 있나요?,
+    5) 더 추가할 사항이 있나요? 라고 순서대로 묻습니다.
+    마지막으로, 사용자의 선호를 반영하여 적절한 재료 목록을 한 줄로 나열된 형태로 제시하고,
+    이어서 순서가 매겨진 단계별 요리 레시피를 각 줄마다 줄바꿈하여 명확하게 출력해주세요.
+    레시피 단계마다 요리 관련 이모지를 포함해주세요.
+    레시피 마지막에는 요리 결과 사진이 포함된 큰 이미지를 출력해주세요. (예: ![요리 이미지](이미지 URL))`
   }
 ];
 
@@ -27,8 +30,29 @@ window.addEventListener("DOMContentLoaded", () => {
 function appendMessage(content, sender) {
   const message = document.createElement("div");
   message.className = `message ${sender}`;
-  message.innerHTML = content;
-  chatbox.appendChild(message);
+
+  // 이미지 포함 여부 확인 및 분리 렌더링
+  const parts = content.split(/(!\[.*?\]\(.*?\))/g);
+  parts.forEach(part => {
+    if (part.startsWith('![')) {
+      const match = part.match(/!\[.*?\]\((.*?)\)/);
+      if (match) {
+        const img = document.createElement("img");
+        img.src = match[1];
+        img.alt = "요리 이미지";
+        img.style.maxWidth = "100%";
+        img.style.marginTop = "12px";
+        img.style.borderRadius = "16px";
+        chatbox.appendChild(img);
+      }
+    } else {
+      const div = document.createElement("div");
+      div.innerHTML = part.replace(/\n/g, '<br>');
+      div.className = `message ${sender}`;
+      chatbox.appendChild(div);
+    }
+  });
+
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
